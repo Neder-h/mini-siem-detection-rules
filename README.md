@@ -41,7 +41,7 @@ mini-siem-detection-rules/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/mini-siem-detection-rules.git
+git clone https://github.com/Neder-h/mini-siem-detection-rules.git
 cd mini-siem-detection-rules
 
 # No dependencies to install - uses Python standard library only
