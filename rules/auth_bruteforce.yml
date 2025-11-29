@@ -1,0 +1,19 @@
+title: Application Authentication Brute-Force
+id: 11111111-1111-1111-1111-111111111111
+description: Detect repeated failed authentication attempts against an application endpoint that may indicate brute-force activity.
+status: experimental
+logsource:
+  product: linux
+  service: authentication
+  category: authentication
+detection:
+  selection:
+    event_type: auth_failure
+  timeframe: 1m
+  condition: selection | count_more(5)
+fields:
+  - src_ip
+  - user
+  - event_type
+falsepositives: Bulk user provisioning or scripted failures from trusted automation; validate source before escalation.
+level: high

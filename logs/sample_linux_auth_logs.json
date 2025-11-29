@@ -1,0 +1,20 @@
+# Authentication brute-force logs (matches)
+{"event_type":"auth_failure","user":"webapp_user","src_ip":"10.1.1.5","timestamp":"2025-11-29T10:00:01Z","application":"portal"}
+{"event_type":"auth_failure","user":"webapp_user","src_ip":"10.1.1.5","timestamp":"2025-11-29T10:00:15Z","application":"portal"}
+{"event_type":"auth_failure","user":"webapp_user","src_ip":"10.1.1.5","timestamp":"2025-11-29T10:00:30Z","application":"portal"}
+{"event_type":"auth_failure","user":"webapp_user","src_ip":"10.1.1.5","timestamp":"2025-11-29T10:00:45Z","application":"portal"}
+{"event_type":"auth_failure","user":"webapp_user","src_ip":"10.1.1.5","timestamp":"2025-11-29T10:00:58Z","application":"portal"}
+
+# Authentication brute-force logs (false positives)
+{"event_type":"auth_failure","user":"maintenance_bot","src_ip":"10.2.2.9","timestamp":"2025-11-29T11:00:01Z","application":"portal","note":"automated script rolling credentials"}
+{"event_type":"auth_failure","user":"batch_job","src_ip":"10.3.3.8","timestamp":"2025-11-29T12:00:12Z","application":"portal","note":"scheduled test run"}
+
+# Linux privilege escalation logs (matches)
+{"process_name":"sudo","command_line":"sudo su -","user":"developer","timestamp":"2025-11-29T14:00:00Z","tty":"/dev/pts/1"}
+{"process_name":"sudo","command_line":"sudo su - root","user":"developer","timestamp":"2025-11-29T14:01:20Z","tty":"/dev/pts/1"}
+{"process_name":"sudo","command_line":"sudo su -c 'bash -i'","user":"contractor","timestamp":"2025-11-29T14:02:30Z","tty":"/dev/pts/2"}
+
+# Linux privilege escalation logs (false positives)
+{"process_name":"sudo","command_line":"sudo cat /etc/passwd","user":"ops","timestamp":"2025-11-29T15:00:00Z","tty":"/dev/pts/3"}
+{"process_name":"sudo","command_line":"sudo ssh root@backup","user":"backup_admin","timestamp":"2025-11-29T15:05:00Z","tty":"/dev/pts/4","note":"authorized backup job"}
+{"process_name":"sudo","command_line":"sudo -u postgres psql","user":"dbadmin","timestamp":"2025-11-29T15:10:00Z","tty":"/dev/pts/5"}

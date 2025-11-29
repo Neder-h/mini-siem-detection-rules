@@ -1,0 +1,19 @@
+title: Linux Privilege Escalation via Sudo/Su
+id: 33333333-3333-3333-3333-333333333333
+description: Detects when users invoke sudo with su to escalate privileges.
+status: experimental
+logsource:
+  product: linux
+  service: auditd
+  category: process_creation
+detection:
+  selection:
+    process_name: sudo
+    command_line|contains: "su -"
+  condition: selection
+fields:
+  - user
+  - process_name
+  - command_line
+falsepositives: Administrators intentionally entering root shells; confirm user intent before acting.
+level: medium

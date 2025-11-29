@@ -1,0 +1,22 @@
+title: Web Server SQL Injection Attempt
+id: 44444444-4444-4444-4444-444444444444
+description: Watches for SQL injection payloads such as UNION SELECT, OR '1'='1, or trailing comments in HTTP requests.
+status: stable
+logsource:
+  product: apache
+  category: webserver
+  service: access
+detection:
+  selection:
+    http_method: GET
+    url|contains:
+      - "UNION SELECT"
+      - "OR '1'='1"
+      - "--"
+  condition: selection
+fields:
+  - client_ip
+  - url
+  - http_method
+falsepositives: Encoded or legitimate debugging queries with similar strings; decode and validate the request purpose.
+level: high

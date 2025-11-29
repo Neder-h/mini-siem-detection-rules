@@ -1,0 +1,10 @@
+# Web SQL injection logs (matches)
+{"http_method":"GET","url":"/search?q=1 UNION SELECT username,password FROM users","client_ip":"203.0.113.10","timestamp":"2025-11-29T16:00:00Z","status_code":200}
+{"http_method":"GET","url":"/products?id=5 OR '1'='1","client_ip":"203.0.113.12","timestamp":"2025-11-29T16:02:00Z","status_code":404}
+{"http_method":"GET","url":"/orders?user=admin--","client_ip":"203.0.113.15","timestamp":"2025-11-29T16:03:30Z","status_code":403}
+{"http_method":"GET","url":"/account?redirect=/home UNION SELECT * FROM credentials","client_ip":"203.0.113.18","timestamp":"2025-11-29T16:05:00Z","status_code":200}
+
+# Web SQL injection logs (false positives)
+{"http_method":"GET","url":"/help?page=1","client_ip":"203.0.113.20","timestamp":"2025-11-29T16:10:00Z","status_code":200}
+{"http_method":"POST","url":"/api/data","client_ip":"203.0.113.21","timestamp":"2025-11-29T16:12:00Z","status_code":200,"note":"POST request not matched"}
+{"http_method":"GET","url":"/analytics?query=metrics_summary","client_ip":"203.0.113.22","timestamp":"2025-11-29T16:15:00Z","status_code":200,"note":"no injection pattern"}
